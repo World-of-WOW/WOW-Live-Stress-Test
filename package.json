@@ -1,0 +1,29 @@
+{
+  "name": "wow-live-stress-test",
+  "version": "1.0.0",
+  "description": "HLS streaming stress test using Playwright - automatically scales browser count based on internet speed",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/setup-env.js && node --env-file=.env src/index.js",
+    "speedtest": "node -e \"import('./src/speedtest.js').then(m => m.runSpeedTest())\"",
+    "test": "node -e \"console.log('Installation OK')\""
+  },
+  "keywords": [
+    "playwright",
+    "stress-test",
+    "hls",
+    "streaming",
+    "load-testing"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^5.6.2",
+    "cli-progress": "^3.12.0",
+    "playwright": "^1.57.0"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  }
+}
