@@ -143,11 +143,18 @@ fi
 
 # Ask user if they want to run the test
 echo ""
-read -p "Would you like to start the stress test now? (y/n): " -n 1 -r
-echo ""
-
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-    echo -e "${CYAN}Starting stress test...${NC}"
+if read -p "Would you like to start the stress test now? (y/n): " -n 1 -r 2>/dev/null; then
     echo ""
-    npm start
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        echo -e "${CYAN}Starting stress test...${NC}"
+        echo ""
+        npm start
+    fi
+else
+    # read failed (likely piped execution on Linux after sudo prompt)
+    echo ""
+    echo -e "${CYAN}To start the stress test, run:${NC}"
+    echo ""
+    echo "  cd $INSTALL_DIR && npm start"
+    echo ""
 fi
