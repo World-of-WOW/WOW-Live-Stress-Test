@@ -11,7 +11,7 @@ const rootDir = join(__dirname, '..');
 const envPath = join(rootDir, '.env');
 
 // Default values (same as install scripts)
-const DEFAULT_STREAM_URL = 'https://worldofwow.dev/assets/streams/example.html';
+const DEFAULT_STREAM_URL = 'https://www.worldofwow.com/live-event/franklammersofficial/3489e3a3-9f13-46bb-b413-3614e54516ea';
 const DEFAULT_STREAM_BITRATE_KBPS = '2800';
 
 if (!existsSync(envPath)) {
