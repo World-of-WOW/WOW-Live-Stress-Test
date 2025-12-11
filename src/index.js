@@ -6,6 +6,8 @@ import config from '../config.js';
 import { runSpeedTest, calculateMaxBrowsers } from './speedtest.js';
 import { BrowserManager } from './browser-manager.js';
 
+// NOTE this is only to check if we change things it will be updated by re-running this install
+
 // Parse command line arguments
 const args = process.argv.slice(2);
 const flags = {
