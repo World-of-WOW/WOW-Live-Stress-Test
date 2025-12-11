@@ -4,7 +4,7 @@
 $ErrorActionPreference = "Stop"
 
 # Default values
-$DEFAULT_STREAM_URL = "https://worldofwow.dev/assets/streams/example.html"
+$DEFAULT_STREAM_URL = "https://www.worldofwow.com/live-event/franklammersofficial/3489e3a3-9f13-46bb-b413-3614e54516ea"
 $DEFAULT_STREAM_BITRATE_KBPS = "2800"
 
 # Colors
