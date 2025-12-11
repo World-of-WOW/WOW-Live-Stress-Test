@@ -51,8 +51,7 @@ try {
         Write-Host ""
         Write-Error "Node.js version 22 or higher is required (found $nodeVersion)" -ErrorAction Continue
         Write-Host ""
-        Write-Host "Press any key to exit..." -ForegroundColor Gray
-        $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+        Read-Host "Press Enter to exit"
         exit 1
     }
 
@@ -67,8 +66,7 @@ try {
     Write-Host ""
     Write-Error "Node.js is not installed" -ErrorAction Continue
     Write-Host ""
-    Write-Host "Press any key to exit..." -ForegroundColor Gray
-    $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+    Read-Host "Press Enter to exit"
     exit 1
 }
 
@@ -99,8 +97,7 @@ try {
     Write-Host ""
     Write-Error "npm is not installed or execution policy prevents running scripts" -ErrorAction Continue
     Write-Host ""
-    Write-Host "Press any key to exit..." -ForegroundColor Gray
-    $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+    Read-Host "Press Enter to exit"
     exit 1
 }
 
