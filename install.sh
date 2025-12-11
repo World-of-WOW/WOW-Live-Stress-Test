@@ -74,8 +74,15 @@ if [ -d "$INSTALL_DIR" ]; then
     cd "$INSTALL_DIR"
     if [ -d ".git" ]; then
         git pull --quiet
+    else
+        # No .git folder = ZIP install, remove and re-download
+        echo -e "${YELLOW}No git repository found, removing old installation...${NC}"
+        cd ..
+        rm -rf "$INSTALL_DIR"
     fi
-else
+fi
+
+if [ ! -d "$INSTALL_DIR" ]; then
     echo -e "${CYAN}Downloading project...${NC}"
 
     # Try git clone first, fall back to downloading archive

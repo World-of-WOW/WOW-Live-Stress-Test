@@ -125,8 +125,15 @@ if (Test-Path $INSTALL_DIR) {
     Set-Location $INSTALL_DIR
     if ((Test-Path ".git") -and $hasGit) {
         git pull --quiet 2>$null
+    } else {
+        # No .git folder = ZIP install, remove and re-download
+        Write-Host "No git repository found, removing old installation..." -ForegroundColor Yellow
+        Set-Location ..
+        Remove-Item $INSTALL_DIR -Recurse -Force
     }
-} else {
+}
+
+if (-not (Test-Path $INSTALL_DIR)) {
     Write-Host "Downloading project..." -ForegroundColor Cyan
 
     if ($hasGit) {
