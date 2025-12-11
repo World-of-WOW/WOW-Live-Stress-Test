@@ -34,32 +34,32 @@ try {
 
     $versionNumber = [int]($nodeVersion -replace 'v(\d+)\..*', '$1')
     if ($versionNumber -lt 22) {
-        Write-Host ""
-        Write-Host "╔════════════════════════════════════════════════════════╗" -ForegroundColor Red
-        Write-Host "║  ERROR: Node.js version 22 or higher is required       ║" -ForegroundColor Red
-        Write-Host "╚════════════════════════════════════════════════════════╝" -ForegroundColor Red
-        Write-Host ""
-        Write-Host "  Current version: " -NoNewline
-        Write-Host "$nodeVersion" -ForegroundColor Yellow
-        Write-Host "  Required version: " -NoNewline
-        Write-Host "v22+" -ForegroundColor Green
-        Write-Host ""
-        Write-Host "  Please upgrade Node.js:"
-        Write-Host "    - Download from: https://nodejs.org/"
-        Write-Host "    - Or use winget: winget install OpenJS.NodeJS"
-        Write-Host "    - Or use chocolatey: choco install nodejs"
-        Write-Host ""
+        Write-Error ""
+        Write-Error "╔════════════════════════════════════════════════════════╗" -ForegroundColor Red
+        Write-Error "║  ERROR: Node.js version 22 or higher is required       ║" -ForegroundColor Red
+        Write-Error "╚════════════════════════════════════════════════════════╝" -ForegroundColor Red
+        Write-Error ""
+        Write-Error "  Current version: " -NoNewline
+        Write-Error "$nodeVersion" -ForegroundColor Yellow
+        Write-Error "  Required version: " -NoNewline
+        Write-Error "v22+" -ForegroundColor Green
+        Write-Error ""
+        Write-Error "  Please upgrade Node.js:"
+        Write-Error "    - Download from: https://nodejs.org/"
+        Write-Error "    - Or use winget: winget install OpenJS.NodeJS"
+        Write-Error "    - Or use chocolatey: choco install nodejs"
+        Write-Error ""
         exit 1
     }
 
     Write-Host "✓ Node.js $nodeVersion found" -ForegroundColor Green
 } catch {
-    Write-Host "✗ Node.js is not installed" -ForegroundColor Red
-    Write-Host ""
-    Write-Host "Please install Node.js v22 or later:" -ForegroundColor Yellow
-    Write-Host "  - Download from: https://nodejs.org/"
-    Write-Host "  - Or use winget: winget install OpenJS.NodeJS.LTS"
-    Write-Host "  - Or use chocolatey: choco install nodejs-lts"
+    Write-Error "✗ Node.js is not installed" -ForegroundColor Red
+    Write-Error ""
+    Write-Error "Please install Node.js v22 or later:" -ForegroundColor Yellow
+    Write-Error "  - Download from: https://nodejs.org/"
+    Write-Error "  - Or use winget: winget install OpenJS.NodeJS.LTS"
+    Write-Error "  - Or use chocolatey: choco install nodejs-lts"
     exit 1
 }
 
@@ -71,7 +71,23 @@ try {
     }
     Write-Host "✓ npm $npmVersion found" -ForegroundColor Green
 } catch {
-    Write-Host "✗ npm is not installed" -ForegroundColor Red
+    Write-Error "✗ npm is not installed" -ForegroundColor Red
+    Write-Error ""
+    Write-Error "Please try to run 'npm -v' in powershell"
+    Write-Error "If  you get this error:"
+    Write-Error ""
+    Write-Error "npm : File C:\Program Files\nodejs\npm.ps1 cannot be loaded because running scripts is disabled on this system." -ForegroundColor Red
+    Write-Error "For more information, see about_Execution_Policies at" -ForegroundColor Red
+    Write-Error "https:/go.microsoft.com/fwlink/?LinkID=135170." -ForegroundColor Red
+    Write-Error "At line:1 char:1" -ForegroundColor Red
+    Write-Error "+ npm -v" -ForegroundColor Red
+    Write-Error "+ ~~~" -ForegroundColor Red
+    Write-Error "    + CategoryInfo          : SecurityError: (:) [], PSSecurityException" -ForegroundColor Red
+    Write-Error "    + FullyQualifiedErrorId : UnauthorizedAccess" -ForegroundColor Red
+    Write-Error ""
+    Write-Error "Then you need to run the following: 'Set-ExecutionPolicy RemoteSigned -Scope CurrentUser'"
+    Write-Error ""
+    
     exit 1
 }
 
