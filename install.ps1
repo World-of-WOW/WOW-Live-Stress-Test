@@ -35,14 +35,14 @@ try {
     $versionNumber = [int]($nodeVersion -replace 'v(\d+)\..*', '$1')
     if ($versionNumber -lt 22) {
         Write-Error ""
-        Write-Error "╔════════════════════════════════════════════════════════╗" -ForegroundColor Red
-        Write-Error "║  ERROR: Node.js version 22 or higher is required       ║" -ForegroundColor Red
-        Write-Error "╚════════════════════════════════════════════════════════╝" -ForegroundColor Red
+        Write-Error "╔════════════════════════════════════════════════════════╗"
+        Write-Error "║  ERROR: Node.js version 22 or higher is required       ║"
+        Write-Error "╚════════════════════════════════════════════════════════╝"
         Write-Error ""
         Write-Error "  Current version: " -NoNewline
-        Write-Error "$nodeVersion" -ForegroundColor Yellow
+        Write-Error "$nodeVersion"
         Write-Error "  Required version: " -NoNewline
-        Write-Error "v22+" -ForegroundColor Green
+        Write-Error "v22+"
         Write-Error ""
         Write-Error "  Please upgrade Node.js:"
         Write-Error "    - Download from: https://nodejs.org/"
@@ -54,9 +54,9 @@ try {
 
     Write-Host "✓ Node.js $nodeVersion found" -ForegroundColor Green
 } catch {
-    Write-Error "✗ Node.js is not installed" -ForegroundColor Red
+    Write-Error "✗ Node.js is not installed"
     Write-Error ""
-    Write-Error "Please install Node.js v22 or later:" -ForegroundColor Yellow
+    Write-Error "Please install Node.js v22 or later:"
     Write-Error "  - Download from: https://nodejs.org/"
     Write-Error "  - Or use winget: winget install OpenJS.NodeJS.LTS"
     Write-Error "  - Or use chocolatey: choco install nodejs-lts"
@@ -71,19 +71,19 @@ try {
     }
     Write-Host "✓ npm $npmVersion found" -ForegroundColor Green
 } catch {
-    Write-Error "✗ npm is not installed" -ForegroundColor Red
+    Write-Error "✗ npm is not installed"
     Write-Error ""
     Write-Error "Please try to run 'npm -v' in powershell"
     Write-Error "If  you get this error:"
     Write-Error ""
     Write-Error "npm : File C:\Program Files\nodejs\npm.ps1 cannot be loaded because running scripts is disabled on this system." -ForegroundColor Red
-    Write-Error "For more information, see about_Execution_Policies at" -ForegroundColor Red
-    Write-Error "https:/go.microsoft.com/fwlink/?LinkID=135170." -ForegroundColor Red
-    Write-Error "At line:1 char:1" -ForegroundColor Red
-    Write-Error "+ npm -v" -ForegroundColor Red
-    Write-Error "+ ~~~" -ForegroundColor Red
-    Write-Error "    + CategoryInfo          : SecurityError: (:) [], PSSecurityException" -ForegroundColor Red
-    Write-Error "    + FullyQualifiedErrorId : UnauthorizedAccess" -ForegroundColor Red
+    Write-Error "For more information, see about_Execution_Policies at"
+    Write-Error "https:/go.microsoft.com/fwlink/?LinkID=135170."
+    Write-Error "At line:1 char:1"
+    Write-Error "+ npm -v"
+    Write-Error "+ ~~~"
+    Write-Error "    + CategoryInfo          : SecurityError: (:) [], PSSecurityException"
+    Write-Error "    + FullyQualifiedErrorId : UnauthorizedAccess"
     Write-Error ""
     Write-Error "Then you need to run the following: 'Set-ExecutionPolicy RemoteSigned -Scope CurrentUser'"
     Write-Error ""
