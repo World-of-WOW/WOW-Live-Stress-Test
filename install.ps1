@@ -50,6 +50,9 @@ try {
         Write-Host "    - Or use chocolatey: choco install nodejs"
         Write-Host ""
         Write-Error "Node.js version 22 or higher is required (found $nodeVersion)" -ErrorAction Continue
+        Write-Host ""
+        Write-Host "Press any key to exit..." -ForegroundColor Gray
+        $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
         exit 1
     }
 
@@ -63,6 +66,9 @@ try {
     Write-Host "  - Or use chocolatey: choco install nodejs-lts"
     Write-Host ""
     Write-Error "Node.js is not installed" -ErrorAction Continue
+    Write-Host ""
+    Write-Host "Press any key to exit..." -ForegroundColor Gray
+    $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
     exit 1
 }
 
@@ -92,6 +98,9 @@ try {
     Write-Host "  Set-ExecutionPolicy RemoteSigned -Scope CurrentUser" -ForegroundColor Cyan
     Write-Host ""
     Write-Error "npm is not installed or execution policy prevents running scripts" -ErrorAction Continue
+    Write-Host ""
+    Write-Host "Press any key to exit..." -ForegroundColor Gray
+    $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
     exit 1
 }
 
